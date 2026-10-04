@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ActivityT3</string>
+    <string name="boton_aceptar">Accept</string>
+    <string name="boton_cancelar">Cancel</string>
+</resources>

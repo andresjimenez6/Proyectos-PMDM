@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ActividadT3</string>
+    <string name="app_name" translatable="false">ActividadT3</string>
+    <string name="boton_aceptar" translatable="false">Aceptar</string>
+    <string name="boton_cancelar" translatable="false">Cancelar</string>
 </resources>

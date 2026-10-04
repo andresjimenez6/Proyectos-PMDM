@@ -20,18 +20,18 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:translationX="100px"
-        android:translationY="1150px"
-        tools:layout_editor_absoluteX="38dp" />
+        android:text="@string/boton_aceptar"
+        android:translationX="170px"
+        android:translationY="1300px"
+        />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:translationX="325px"
-        android:translationY="1150px"
-        tools:layout_editor_absoluteX="124dp" />
+        android:text="@string/boton_cancelar"
+        android:translationX="600px"
+        android:translationY="1300px"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
