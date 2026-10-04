@@ -24,6 +24,7 @@
         android:translationX="170px"
         android:translationY="1300px"
         app:backgroundTint="@color/green"
+        style="@style/Animation.Design.BottomSheetDialog"
         />
 
     <Button
@@ -34,6 +35,7 @@
         android:translationX="600px"
         android:translationY="1300px"
         app:backgroundTint="@color/red"
+        style="@style/Animation.Design.BottomSheetDialog"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
