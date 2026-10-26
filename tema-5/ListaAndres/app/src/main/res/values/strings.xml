@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ListaAndres</string>
+    <string name="imagen_elemento">Imagen del elemento</string>
+    <string name="cabecera">Garaje de Andrés</string>
+</resources>
