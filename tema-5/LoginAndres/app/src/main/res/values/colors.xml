@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="porcelana">#FFFEFA</color>
+    <color name="Lino">#F6F4ED</color>
+    <color name="burma">#E1E9E5</color>
+    <color name="salvia">#A9BCAF</color>
+    <color name="Bosque">#3F6355</color>
+    <color name="tinta_pino">#293F37</color>
+    <color name="correcto">#00FF00</color>
+    <color name="incorrecto">#FF0000</color>
+
+
+</resources>
