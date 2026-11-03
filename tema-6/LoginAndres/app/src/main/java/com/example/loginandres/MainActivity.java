@@ -1,6 +1,7 @@
 package com.example.loginandres;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -90,12 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 intentos = 3;
                 if (switch1.isChecked()) {
                     preferencias.edit().putString("correo", correo).apply();
-                    txtMensaje.setText("Usuario y contraseña correctos. Correo recordado para siguientes accesos");
                 } else {
                     preferencias.edit().remove("correo").apply();
-                    txtMensaje.setText("Usuario y contraseña correctos");
                 }
-                txtMensaje.setTextColor(ContextCompat.getColor(this, R.color.correcto));
+                Intent intent = new Intent(this, MenuActivity.class);
+                intent.putExtra(MenuActivity.EXTRA_CORREO, correo);
+                startActivity(intent);
+                finish();
                 return;
             }
 

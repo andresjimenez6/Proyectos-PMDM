@@ -5,4 +5,7 @@
     <string name="recordar_usuario">¿Recordar?</string>
     <string name="entrar">Continuar</string>
     <string name="falta_correo">El correo no puede estar vacío</string>
+    <string name="menu_princial">Menú principal</string>
+    <string name="saludo">Hola, %1$s</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 </resources>
