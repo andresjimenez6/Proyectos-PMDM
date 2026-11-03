@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LoginAndres</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="recordar_usuario">¿Recordar?</string>
+    <string name="entrar">Continuar</string>
+    <string name="falta_correo">El correo no puede estar vacío</string>
+</resources>
