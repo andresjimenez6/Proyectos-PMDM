@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String CORREO_VALIDO = "andres@correo.com";
     private static final String CLAVE_VALIDA = "1234";
     private int intentos = 3;
+    private SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,17 +60,13 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             intentos = savedInstanceState.getInt("intentos", 3);
         }
-        SharedPreferences preferencias = getSharedPreferences("login", MODE_PRIVATE);
-        String correoGuardado = preferencias.getString("correo", "");
-        if (savedInstanceState == null) {
-            editTextTextEmailAddress.setText(correoGuardado);
-            switch1.setChecked(!correoGuardado.isEmpty());
+        prefs = getSharedPreferences("sesion", MODE_PRIVATE);
+        String guardado = prefs.getString("correo", "");
+        if (!guardado.isEmpty()) {
+            editTextTextEmailAddress.setText(guardado);
+            switch1.setChecked(true);
+            editTextTextPassword.requestFocus();
         }
-        switch1.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (!isChecked) {
-                preferencias.edit().remove("correo").apply();
-            }
-        });
 
         btnContinuar.setOnClickListener(v -> {
             String correo = editTextTextEmailAddress.getText().toString().trim();
@@ -90,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
             if (correo.equals(CORREO_VALIDO) && clave.equals(CLAVE_VALIDA)) {
                 intentos = 3;
                 if (switch1.isChecked()) {
-                    preferencias.edit().putString("correo", correo).apply();
+                    prefs.edit().putString("correo", correo).apply();
                 } else {
-                    preferencias.edit().remove("correo").apply();
+                    prefs.edit().remove("correo").apply();
                 }
                 Intent intent = new Intent(this, MenuActivity.class);
                 intent.putExtra(MenuActivity.EXTRA_CORREO, correo);
