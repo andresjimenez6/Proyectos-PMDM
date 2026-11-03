@@ -1,6 +1,8 @@
 package com.example.loginandres;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +28,13 @@ public class MenuActivity extends AppCompatActivity {
         String correo = getIntent().getStringExtra(EXTRA_CORREO);
         TextView tvSaludo = findViewById(R.id.tvSaludo);
         tvSaludo.setText(getString(R.string.saludo, correo));
+
+        Button btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
