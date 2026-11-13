@@ -109,11 +109,34 @@ public class MainActivity extends AppCompatActivity {
 
         btnSkipBack.setOnClickListener(v -> player.seekTo(0));
         btnSkipForward.setOnClickListener(v -> player.seekTo(0));
-        handler.post(actualizarProgreso);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        handler.post(actualizarProgreso);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacks(actualizarProgreso);
+        if (player != null) {
+            player.pause();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (player != null) {
+            player.release();
+            player = null;
+        }
+    }
+
 }
