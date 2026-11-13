@@ -113,4 +113,73 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnPlayPausa"
         app:layout_constraintTop_toTopOf="@id/btnPlayPausa" />
+    <TextView
+        android:id="@+id/tvEfectos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/efectos_sonido"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPlayPausa" />
+
+    <Button
+        android:id="@+id/btnGoteo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/verde"
+        android:textColor="@color/neutral_grey"
+        android:enabled="false"
+        android:text="@string/goteo"
+        app:layout_constraintEnd_toStartOf="@id/btnTormenta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEfectos" />
+
+    <Button
+        android:id="@+id/btnTormenta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/neutral_grey"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/verde"
+        android:enabled="false"
+        android:text="@string/tormenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnGoteo"
+        app:layout_constraintTop_toTopOf="@id/btnGoteo" />
+
+    <Button
+        android:id="@+id/btnSirena"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/neutral_grey"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/verde"
+        android:enabled="false"
+        android:text="@string/sirena"
+        app:layout_constraintEnd_toStartOf="@id/btnAgua"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGoteo" />
+
+    <Button
+        android:id="@+id/btnAgua"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/neutral_grey"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/verde"
+        android:enabled="false"
+        android:text="@string/agua"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSirena"
+        app:layout_constraintTop_toTopOf="@id/btnSirena" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

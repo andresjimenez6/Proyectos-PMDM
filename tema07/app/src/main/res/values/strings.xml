@@ -3,4 +3,9 @@
     <string name="song">Jane! - the long faces</string>
 
     <string name="tiempo_inicial">00:00</string>
+    <string name="efectos_sonido">Efectos de sonido</string>
+    <string name="goteo">Goteo</string>
+    <string name="tormenta">Tormenta</string>
+    <string name="sirena">Sirena</string>
+    <string name="agua">Agua</string>
 </resources>
