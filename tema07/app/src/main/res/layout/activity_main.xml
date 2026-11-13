@@ -47,6 +47,7 @@
         />
 
     <ImageButton
+        android:id="@+id/btnSkipBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="89dp"
@@ -59,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/button"
+        android:id="@+id/btnSkipForward"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="272dp"
@@ -72,6 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/btnPlayPausa"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="155dp"
