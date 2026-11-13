@@ -2,7 +2,13 @@ package com.example.reproductorandrs;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.media3.common.MediaItem;
@@ -16,6 +22,26 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private ExoPlayer player;
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private SeekBar seekBar;
+    private TextView tvTiempoActual;
+    private TextView tvDuracionTotal;
+    private final Runnable actualizarProgreso = new Runnable() {
+        @Override
+        public void run() {
+            if (player != null && player.isPlaying()) {
+                long posicion = player.getCurrentPosition();
+                seekBar.setProgress((int) posicion);
+                tvTiempoActual.setText(formatearTiempo(posicion));
+            }
+            handler.postDelayed(this, 500);
+        }
+    };
+
+    private String formatearTiempo(long ms) {
+        long segundos = ms / 1000;
+        return String.format(Locale.getDefault(), "%02d:%02d", segundos / 60, segundos % 60);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         player.setMediaItem(MediaItem.fromUri(uri));
         player.prepare();
 
+        seekBar = findViewById(R.id.seekBar);
+        tvTiempoActual = findViewById(R.id.tvTiempoActual);
+        tvDuracionTotal = findViewById(R.id.tvDuracionTotal);
         ImageButton btnPlayPausa = findViewById(R.id.btnPlayPausa);
         ImageButton btnSkipBack = findViewById(R.id.btnSkipBack);
         ImageButton btnSkipForward = findViewById(R.id.btnSkipForward);
@@ -35,8 +64,14 @@ public class MainActivity extends AppCompatActivity {
         player.addListener(new Player.Listener() {
             @Override
             public void onPlaybackStateChanged(int playbackState) {
-                if (playbackState == Player.STATE_ENDED) {
+                if (playbackState == Player.STATE_READY) {
+                    long duracion = player.getDuration();
+                    seekBar.setMax((int) duracion);
+                    tvDuracionTotal.setText(formatearTiempo(duracion));
+                } else if (playbackState == Player.STATE_ENDED) {
                     btnPlayPausa.setImageResource(R.drawable.ic_play);
+                    seekBar.setProgress(seekBar.getMax());
+                    tvTiempoActual.setText(tvDuracionTotal.getText());
                 }
             }
         });
@@ -54,8 +89,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    tvTiempoActual.setText(formatearTiempo(progress));
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar bar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar bar) {
+                player.seekTo(bar.getProgress());
+            }
+        });
+
         btnSkipBack.setOnClickListener(v -> player.seekTo(0));
         btnSkipForward.setOnClickListener(v -> player.seekTo(0));
+        handler.post(actualizarProgreso);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
